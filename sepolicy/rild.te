@@ -5,3 +5,7 @@ allow rild sysfs_usb_supply:file r_file_perms;
 allow rild sysfs_thermal:dir search;
 allow rild sysfs_thermal:file r_file_perms;
 allow rild system_data_file:sock_file { create unlink setattr };
+
+# Allow permissions for FSG
+allow rild fsg_file:dir search;
+allow rild fsg_file:file r_file_perms;
