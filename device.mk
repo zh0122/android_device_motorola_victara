@@ -27,6 +27,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
@@ -52,9 +53,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
+PRODUCT_CHARACTERISTICS := nosdcard
+
 # Screen density
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
@@ -120,6 +123,10 @@ PRODUCT_PACKAGES += \
     mkfs.f2fs \
     resize2fs \
     setup_fs
+
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8974
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -228,6 +235,8 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd \
     hostapd_default.conf \
+    hostapd.accept \
+    hostapd.deny \
     libwpa_client \
     wcnss_service \
     wpa_supplicant
@@ -244,4 +253,5 @@ PRODUCT_COPY_FILES += \
 
 # CMActions
 PRODUCT_PACKAGES += \
-    CMActions
+    CMActions \
+    libjni_CMActions
